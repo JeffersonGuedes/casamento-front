@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getPresentes } from "@/lib/api";
 import GiftCard from "@/components/GiftCard";
 
