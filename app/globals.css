@@ -1,11 +1,20 @@
 @import "tailwindcss";
-
+ 
+@theme {
+  --font-display: var(--font-playfair), "Cormorant Garamond", serif;
+  --font-serif: var(--font-cormorant);
+ 
+  --color-olive: #4a5d3f;
+  --color-cream: #f5f1e6;
+}
+ 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+ 
 body {
   background: #f5f1e6;
 }
+ 

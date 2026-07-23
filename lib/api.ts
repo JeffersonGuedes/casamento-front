@@ -8,7 +8,7 @@ export type Presente = {
 };
 
 export async function getPresentes(): Promise<Presente[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/presentes`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/registry/gifts/`, {
     next: { revalidate: 60 }, // cache por 60s (ISR)
   });
 
@@ -17,7 +17,7 @@ export async function getPresentes(): Promise<Presente[]> {
 }
 
 export async function reservarPresente(id: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/presentes/${id}/reservar`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/registry/gifts/${id}/reserve/`, {
     method: "POST",
   });
   if (!res.ok) throw new Error("Erro ao reservar presente");

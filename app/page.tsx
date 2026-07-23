@@ -11,6 +11,7 @@ import AudioPlayer from "@/components/AudioPlayer";
 import Program from "@/components/sections/Program";
 import Location from "@/components/sections/Location";
 import Countdown from "@/components/sections/Countdown";
+import GiftListLink from "@/components/GiftListLink";
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -22,15 +23,18 @@ export default function Home() {
       {!opened ? (
         <Envelope onOpen={() => setOpened(true)} />
       ) : (
-        <main>
-          <Hero />
-          <Welcome />
-          <Program />
-          <Location />
-          <Questionnaire />
-          <Countdown />
-          <Footer />
-        </main>
+        <>
+          <GiftListLink />
+          <main>
+            <Hero />
+            <Welcome />
+            <Program />
+            <Location />
+            <Questionnaire />
+            <Countdown />
+            <Footer />
+          </main>
+        </>
       )}
     </>
   );

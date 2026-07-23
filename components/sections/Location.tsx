@@ -2,9 +2,8 @@
 import Image from "next/image";
 
 // Troque pelo nome e endereço reais do local
-const VENUE_NAME = "Espaço Jardim das Flores";
-const VENUE_ADDRESS = "Rua das Palmeiras, 123 - Aldeota, Fortaleza - CE";
-
+const VENUE_NAME = "Pé na Areia - Casa & Pousada";
+const VENUE_ADDRESS = "Esquina c - Rua U, Av Beira Mar Tabuba de Morro Branco, Beberibe - CE";
 const MAPS_QUERY = encodeURIComponent(`${VENUE_NAME}, ${VENUE_ADDRESS}`);
 const GOOGLE_MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
 const GOOGLE_MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
@@ -39,16 +38,6 @@ export default function Location() {
             title={`Mapa - ${VENUE_NAME}`}
           />
         </div>
-
-        {/* Botão que abre no Google Maps */}
-        <a
-          href={GOOGLE_MAPS_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block border border-white text-white py-3 px-8 rounded-full tracking-wider text-xs hover:bg-white hover:text-[#14346D] transition-colors"
-        >
-          ABRIR NO GOOGLE MAPS
-        </a>
       </div>
     </section>
   );
