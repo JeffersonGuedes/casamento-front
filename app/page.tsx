@@ -11,7 +11,7 @@ import AudioPlayer from "@/components/AudioPlayer";
 import Program from "@/components/sections/Program";
 import Location from "@/components/sections/Location";
 import Countdown from "@/components/sections/Countdown";
-import GiftListLink from "@/components/GiftListLink";
+import GiftListLink from "@/components/Giftlistlink";
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
