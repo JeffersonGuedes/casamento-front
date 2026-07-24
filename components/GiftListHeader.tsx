@@ -1,20 +1,43 @@
 "use client";
 
 import Link from "next/link";
-import { Gift } from "lucide-react";
+
+const navLinks = [
+  { label: "Confirmar Presença", href: "/confirmar-presenca" },
+  { label: "Lista de Presentes", href: "/presentes" },
+  { label: "Mural de Recados", href: "/mural-recados" },
+];
 
 export default function GiftListHeader() {
   return (
-    <header className="fixed top-5 left-1/2 -translate-x-1/2 z-50">
-      <Link
-        href="/"
-        className="flex items-center gap-2 bg-olive text-cream px-4 h-11 rounded-full shadow-lg hover:scale-105 transition"
-      >
-        <Gift size={18} />
-        <span className="font-serif italic text-sm md:text-base whitespace-nowrap">
-          Lista de presentes
-        </span>
-      </Link>
+    <header className="sticky top-0 inset-x-0 z-50 bg-navy text-cream">
+      <div className="max-w-6xl mx-auto flex items-center justify-between gap-4 px-6 h-16">
+        <Link href="/" className="flex flex-col leading-none shrink-0">
+          <span className="font-serif italic text-xl">G&amp;M</span>
+          <span className="text-[9px] tracking-widest uppercase opacity-60">
+            por Carol Oliveira
+          </span>
+        </Link>
+
+        <nav className="flex items-center gap-4 md:gap-8 text-[10px] md:text-xs tracking-widest uppercase overflow-x-auto">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={
+                link.href === "/presentes"
+                  ? "border-b border-cream pb-1 whitespace-nowrap"
+                  : "opacity-70 hover:opacity-100 transition whitespace-nowrap"
+              }
+            >
+              {link.label}
+            </Link>
+          ))}
+          <button className="opacity-70 hover:opacity-100 transition whitespace-nowrap">
+            Mais ▾
+          </button>
+        </nav>
+      </div>
     </header>
   );
 }
