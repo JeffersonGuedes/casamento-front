@@ -24,23 +24,34 @@ function getApiBaseUrl(): string {
 
 export async function getPresentes(): Promise<Presente[]> {
   const baseUrl = getApiBaseUrl();
-  const res = await fetch(`${baseUrl}/api/registry/gifts/`, {
-    cache: "no-store",
-  });
+  let allGifts: Presente[] = [];
+  let nextPageUrl = `${baseUrl}/api/registry/gifts/`;
 
-  if (!res.ok) throw new Error("Erro ao buscar presentes");
+  while (nextPageUrl) {
+    const res = await fetch(nextPageUrl, {
+      cache: "no-store",
+    });
 
-  const data = await res.json();
+    if (!res.ok) {
+      throw new Error("Erro ao buscar presentes");
+    }
 
-  if (Array.isArray(data)) {
-    return data;
+    const data = await res.json();
+
+    if (Array.isArray(data)) {
+      allGifts = [...allGifts, ...data];
+      break; 
+    }
+    
+    if (data && typeof data === "object" && Array.isArray(data.results)) {
+      allGifts = [...allGifts, ...data.results];
+      nextPageUrl = data.next; 
+    } else {
+      break;
+    }
   }
 
-  if (data && typeof data === "object" && Array.isArray(data.results)) {
-    return data.results;
-  }
-
-  return [];
+  return allGifts;
 }
 
 export async function getPresente(id: number): Promise<Presente> {
