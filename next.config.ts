@@ -11,6 +11,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/presente",
+        destination: "/presentes",
+        permanent: true,
+      },
+      {
+        source: "/presente/:path*",
+        destination: "/presentes/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
