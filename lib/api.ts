@@ -14,12 +14,33 @@ export type Presente = {
   pix_payload?: string | null;
 };
 
+function getApiBaseUrl(): string {
+  const rawBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!rawBaseUrl) {
+    throw new Error("NEXT_PUBLIC_API_URL não está configurada nas variáveis de ambiente");
+  }
+  return rawBaseUrl.replace(/\/+$/, "");
+}
+
 export async function getPresentes(): Promise<Presente[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/registry/gifts/`, {
+  const baseUrl = getApiBaseUrl();
+  const res = await fetch(`${baseUrl}/api/registry/gifts/`, {
     cache: "no-store",
   });
+
   if (!res.ok) throw new Error("Erro ao buscar presentes");
-  return res.json();
+
+  const data = await res.json();
+
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (data && typeof data === "object" && Array.isArray(data.results)) {
+    return data.results;
+  }
+
+  return [];
 }
 
 export async function getPresente(id: number): Promise<Presente> {
@@ -34,7 +55,8 @@ export async function getPresente(id: number): Promise<Presente> {
 }
 
 export async function reserveGift(id: number, buyerName = "Reserva iniciada no checkout") {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/registry/gifts/${id}/reserve/`, {
+  const baseUrl = getApiBaseUrl();
+  const res = await fetch(`${baseUrl}/api/registry/gifts/${id}/reserve/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -80,7 +102,8 @@ export async function confirmarPresente(id: number, data: ConfirmarPresenteInput
   if (data.message) formData.append("message", data.message);
   if (data.comprovante) formData.append("payment_proof_file", data.comprovante);
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/registry/gifts/${id}/reserve/`, {
+  const baseUrl = getApiBaseUrl();
+  const res = await fetch(`${baseUrl}/api/registry/gifts/${id}/reserve/`, {
     method: "POST",
     body: formData,
   });

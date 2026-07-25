@@ -1,8 +1,15 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+function getApiBaseUrl(): string {
+  const rawBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!rawBaseUrl) {
+    throw new Error('NEXT_PUBLIC_API_URL não está configurada');
+  }
+  return rawBaseUrl.replace(/\/+$/, '');
+}
 
 export const api = {
   confirmRsvp: async (data: { name: string; phone: string; is_attending: boolean }) => {
-    const res = await fetch(`${API_URL}/rsvp/confirm/`, {
+    const baseUrl = getApiBaseUrl();
+    const res = await fetch(`${baseUrl}/rsvp/confirm/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -12,14 +19,16 @@ export const api = {
   },
 
   getGifts: async () => {
-    // cache: 'no-store' força o Next.js a sempre buscar dados frescos (crucial para o status de reserva)
-    const res = await fetch(`${API_URL}/registry/gifts/`, { cache: 'no-store' });
+    const baseUrl = getApiBaseUrl();
+    const res = await fetch(`${baseUrl}/registry/gifts/`, { cache: 'no-store' });
     if (!res.ok) throw new Error('Erro ao buscar presentes');
-    return res.json();
+    const data = await res.json();
+    return Array.isArray(data) ? data : data?.results || [];
   },
 
   reserveGift: async (giftId: number, buyerName: string) => {
-    const res = await fetch(`${API_URL}/registry/gifts/${giftId}/reserve/`, {
+    const baseUrl = getApiBaseUrl();
+    const res = await fetch(`${baseUrl}/registry/gifts/${giftId}/reserve/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ buyer_name: buyerName }),
