@@ -48,31 +48,36 @@ export default function PagamentoForm({ presente }: { presente: Presente }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-lg border border-black/5 p-6 md:p-8 space-y-6"
+      className="bg-white rounded-[28px] border border-black/5 p-6 md:p-8 space-y-6 shadow-[0_20px_60px_rgba(15,23,42,0.06)]"
     >
       <div>
-        <h1 className="font-serif italic text-2xl text-navy mb-1">
-          Presentear
+        <p className="text-xs uppercase tracking-[0.24em] text-neutral-400 mb-2">
+          Dados de pagamento
+        </p>
+        <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-1">
+          Finalize sua compra
         </h1>
-        <p className="text-sm text-neutral-500">{presente.name}</p>
+        <p className="text-sm text-neutral-500">
+          Preencha seus dados e envie o comprovante para confirmar o presente de {presente.name}.
+        </p>
       </div>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-xs font-medium text-neutral-600 mb-1">
+          <label className="block text-xs font-semibold text-neutral-700 mb-1">
             Quem está dando o presente?
           </label>
           <input
             required
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            className="w-full border border-black/10 rounded px-3 py-2 text-sm"
+            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-slate-300 focus:bg-white"
             placeholder="Seu nome"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-neutral-600 mb-1">
+          <label className="block text-xs font-semibold text-neutral-700 mb-1">
             Seu e-mail
           </label>
           <input
@@ -80,55 +85,34 @@ export default function PagamentoForm({ presente }: { presente: Presente }) {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-black/10 rounded px-3 py-2 text-sm"
+            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-slate-300 focus:bg-white"
             placeholder="voce@email.com"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-neutral-600 mb-1">
+          <label className="block text-xs font-semibold text-neutral-700 mb-1">
             Escreva sua mensagem (opcional)
           </label>
           <textarea
             value={mensagem}
             onChange={(e) => setMensagem(e.target.value)}
             rows={3}
-            className="w-full border border-black/10 rounded px-3 py-2 text-sm resize-none"
+            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition resize-none focus:border-slate-300 focus:bg-white"
             placeholder="Deixe um recado para o casal..."
           />
         </div>
       </div>
 
-      {/* PIX — placeholder até vocês terem chave/QR real */}
-      <div className="border border-dashed border-navy/30 rounded-lg p-4">
-        <h3 className="text-sm font-medium text-navy mb-2">Pagar com PIX</h3>
-        <div className="w-32 h-32 bg-neutral-100 rounded flex items-center justify-center text-[10px] text-neutral-400 mb-2">
-          QR Code em breve
-        </div>
-        <p className="text-xs text-neutral-500">
-          Chave PIX: <span className="italic">a definir</span>
-        </p>
-      </div>
-
-      {/* Link externo — genérico até vocês decidirem se é por presente ou geral */}
-      <div className="border border-dashed border-navy/30 rounded-lg p-4">
-        <h3 className="text-sm font-medium text-navy mb-2">
-          Ou comprar por outra plataforma
-        </h3>
-        <a href="#" className="text-xs text-navy underline underline-offset-2">
-          Ver onde comprar (link em breve)
-        </a>
-      </div>
-
       <div>
-        <label className="block text-xs font-medium text-neutral-600 mb-1">
+        <label className="block text-xs font-semibold text-neutral-700 mb-1">
           Comprovante de pagamento (se comprou fora do site)
         </label>
         <input
           type="file"
           accept="image/*,application/pdf"
           onChange={(e) => setComprovante(e.target.files?.[0] ?? null)}
-          className="w-full text-xs"
+          className="w-full text-xs text-neutral-500 file:mr-4 file:rounded-full file:border-0 file:bg-slate-900 file:px-4 file:py-2 file:text-white hover:file:opacity-90"
         />
       </div>
 
@@ -137,7 +121,7 @@ export default function PagamentoForm({ presente }: { presente: Presente }) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 rounded-full bg-navy text-cream text-sm font-medium tracking-wide uppercase hover:opacity-90 transition disabled:opacity-60"
+        className="w-full rounded-full bg-slate-900 px-5 py-4 text-sm font-semibold tracking-wide text-white transition hover:opacity-90 disabled:opacity-60"
       >
         {loading ? "Enviando..." : "Confirmar presente"}
       </button>

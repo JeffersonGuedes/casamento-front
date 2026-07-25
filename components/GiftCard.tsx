@@ -1,10 +1,17 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Presente } from "@/lib/api";
 
 export default function GiftCard({ presente }: { presente: Presente }) {
-  const reservado = presente.status !== "PENDENTE";
+  const router = useRouter();
+  const reservado = presente.status !== "AVAILABLE";
   const priceNumber = presente.price ? parseFloat(presente.price) : null;
+
+  function handleComprar() {
+    router.push(`/presentes/${presente.id}/pagamento`);
+  }
 
   return (
     <div className="bg-white rounded-lg overflow-hidden border border-black/5 flex flex-col">
@@ -39,12 +46,13 @@ export default function GiftCard({ presente }: { presente: Presente }) {
             Comprado
           </span>
         ) : (
-          <Link
-            href={`/presentes/${presente.id}/pagamento`}
+          <button
+            type="button"
+            onClick={handleComprar}
             className="mt-auto w-full py-2 rounded text-xs font-medium tracking-wide uppercase text-center bg-navy text-cream hover:opacity-90 transition"
           >
             Comprar
-          </Link>
+          </button>
         )}
       </div>
     </div>

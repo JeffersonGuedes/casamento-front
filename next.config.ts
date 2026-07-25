@@ -1,11 +1,13 @@
-import type { NextConfig } from "next";
-
 const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "seu-cdn.com",
+      },
+      {
+        protocol: "https",
+        hostname: "api.qrserver.com",
       },
     ],
   },
