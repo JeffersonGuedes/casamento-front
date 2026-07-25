@@ -7,7 +7,8 @@ export default async function Presentes() {
 
   try {
     presentes = await getPresentes();
-  } catch {
+  } catch (error) {
+    console.error("Erro ao buscar presentes:", error);
     return (
       <main className="min-h-screen bg-[#f5f1e6] pt-10 pb-16">
         <div className="max-w-3xl mx-auto px-6">
