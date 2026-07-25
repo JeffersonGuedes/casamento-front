@@ -28,7 +28,7 @@ export default function Hero() {
       {/* Foto do casal, já com moldura, centralizada */}
       <div className="relative w-[300px] h-[360px] sm:w-[280px] sm:h-[350px] md:w-[400px] md:h-[480px] mx-auto">
         <Image
-          src="/foto-casal1.png"
+          src="/foto-casal.png"
           alt="Lavinia e Jefferson"
           fill
           className="object-contain"
