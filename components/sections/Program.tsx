@@ -32,12 +32,6 @@ const items: ProgramItem[] = [
     description: ["Hora de boa comida, alegria", "e diversão."],
   },
   {
-    image: "/bolo.png",
-    title: "Bolo",
-    time: "21:00",
-    description: ["Doce símbolo da nossa", "nova vida."],
-  },
-  {
     image: "/encerramento.png",
     title: "Encerramento",
     time: "22:00",
