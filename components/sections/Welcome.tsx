@@ -28,10 +28,10 @@ export default function Welcome() {
         </p>
 
         <p className="leading-relaxed text-base md:text-lg mb-8 w-[85%] sm:w-[75%] md:w-[80%] mx-auto">
-          Estamos muito felizes em convidá-los para nossa primeira
-          celebração em família: nosso casamento! Aguardamos
-          ansiosamente a presença de nossos familiares e amigos mais
-          próximos neste dia especial.
+          É com imensa alegria e profundo amor que convidamos queridos amigos e familiares para o dia em que
+          celebraremos a união do nosso amor com aqueles que fizeram parte da nossa história. Como Tim Bernardes
+          cita, "se hoje a realidade é bem melhor que o sonho eu já sei porque."<br/>
+          Com amor Lavinia e Jefferson.
         </p>
 
         <Image
