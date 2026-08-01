@@ -5,7 +5,7 @@ export type Presente = {
   link?: string | null;
   category: string;
   price: string | null;
-  image_base64: string | null;
+  image: string | null;
   status: "AVAILABLE" | "RESERVED" | "PURCHASED" | string;
   buyer_name: string | null;
   updated_at: string;
@@ -20,6 +20,32 @@ function getApiBaseUrl(): string {
     throw new Error("NEXT_PUBLIC_API_URL não está configurada nas variáveis de ambiente");
   }
   return rawBaseUrl.replace(/\/+$/, "");
+}
+
+function normalizeImageUrl(image: string | null | undefined): string | null {
+  if (!image) {
+    return null;
+  }
+
+  if (/^https?:\/\//i.test(image)) {
+    return image;
+  }
+
+  const baseUrl = getApiBaseUrl();
+  const normalizedPath = image.replace(/^\/+/, "");
+
+  if (normalizedPath.startsWith("media/")) {
+    return `${baseUrl}/${normalizedPath}`;
+  }
+
+  return `${baseUrl}/media/${normalizedPath}`;
+}
+
+function normalizePresente(presente: Presente): Presente {
+  return {
+    ...presente,
+    image: normalizeImageUrl(presente.image),
+  };
 }
 
 export async function getPresentes(): Promise<Presente[]> {
@@ -39,12 +65,12 @@ export async function getPresentes(): Promise<Presente[]> {
     const data = await res.json();
 
     if (Array.isArray(data)) {
-      allGifts = [...allGifts, ...data];
+      allGifts = [...allGifts, ...data.map(normalizePresente)];
       break; 
     }
     
     if (data && typeof data === "object" && Array.isArray(data.results)) {
-      allGifts = [...allGifts, ...data.results];
+      allGifts = [...allGifts, ...data.results.map(normalizePresente)];
       nextPageUrl = data.next; 
     } else {
       break;

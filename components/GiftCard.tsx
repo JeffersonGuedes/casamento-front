@@ -9,12 +9,12 @@ export default function GiftCard({ presente }: { presente: Presente }) {
   return (
     <div className="bg-white rounded-lg overflow-hidden border border-black/5 flex flex-col hover:shadow-md transition-shadow">
       <div className="aspect-square relative bg-neutral-50">
-        {presente.image_base64 ? (
+        {presente.image ? (
           <Image
-            src={presente.image_base64}
+            src={presente.image}
             alt={presente.name}
             fill
-            unoptimized // Obrigatório para base64
+            unoptimized
             className="object-contain p-4"
             sizes="(max-width: 768px) 50vw, 25vw"
           />
