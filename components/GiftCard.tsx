@@ -1,27 +1,20 @@
-"use client";
-
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link"; // Trocamos o useRouter pelo Link
 import type { Presente } from "@/lib/api";
 
 export default function GiftCard({ presente }: { presente: Presente }) {
-  const router = useRouter();
   const reservado = presente.status !== "AVAILABLE";
   const priceNumber = presente.price ? parseFloat(presente.price) : null;
 
-  function handleComprar() {
-    router.push(`/presentes/${presente.id}/pagamento`);
-  }
-
   return (
-    <div className="bg-white rounded-lg overflow-hidden border border-black/5 flex flex-col">
+    <div className="bg-white rounded-lg overflow-hidden border border-black/5 flex flex-col hover:shadow-md transition-shadow">
       <div className="aspect-square relative bg-neutral-50">
         {presente.image_base64 ? (
           <Image
             src={presente.image_base64}
             alt={presente.name}
             fill
-            unoptimized
+            unoptimized // Obrigatório para base64
             className="object-contain p-4"
             sizes="(max-width: 768px) 50vw, 25vw"
           />
@@ -31,6 +24,7 @@ export default function GiftCard({ presente }: { presente: Presente }) {
           </div>
         )}
       </div>
+      
       <div className="p-4 flex flex-col flex-1">
         <h3 className="text-sm font-medium text-neutral-800 mb-1 line-clamp-2">
           {presente.name}
@@ -46,13 +40,13 @@ export default function GiftCard({ presente }: { presente: Presente }) {
             Comprado
           </span>
         ) : (
-          <button
-            type="button"
-            onClick={handleComprar}
-            className="mt-auto w-full py-2 rounded text-xs font-medium tracking-wide uppercase text-center bg-navy text-cream hover:opacity-90 transition"
+          /* Substituímos o <button> por <Link> */
+          <Link
+            href={`/presentes/${presente.id}/pagamento`}
+            className="mt-auto w-full py-2 rounded text-xs font-medium tracking-wide uppercase text-center bg-[#14346D] text-[#F4EFDD] hover:bg-sky-700 transition-colors block"
           >
             Comprar
-          </button>
+          </Link>
         )}
       </div>
     </div>
