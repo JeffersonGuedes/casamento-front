@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // Endpoint de confirmação de presença.
 // Aceita { name: string, is_attending: boolean, name_companions?: string } no corpo.
-const RSVP_ENDPOINT = "https://casamento-itxu.onrender.com/api/rsvp/confirm/";
+const RSVP_ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}api/rsvp/confirm/`;
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -80,7 +80,7 @@ export default function Questionnaire() {
   }
 
   const presencaOptions = [
-    "Sim, com prazer!",
+    "Sim!",
     "Vou de casal!",
     "Infelizmente não poderei",
   ];

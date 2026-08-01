@@ -15,6 +15,7 @@ const config: Config = {
       colors: {
         olive: "#4a5d3f",
         cream: "#f5f1e6",
+        blueo: "#14346D",
       },
     },
   },
