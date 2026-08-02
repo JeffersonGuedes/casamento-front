@@ -43,7 +43,7 @@ export default function GiftCard({ presente }: { presente: Presente }) {
           /* Substituímos o <button> por <Link> */
           <Link
             href={`/presentes/${presente.id}/pagamento`}
-            className="mt-auto w-full py-2 rounded text-xs font-medium tracking-wide uppercase text-center bg-[#14346D] text-[#F4EFDD] hover:bg-sky-700 transition-colors block"
+            className="mt-auto w-full py-2 rounded text-xs font-medium tracking-wide uppercase text-center bg-[#14346D] text-[#F4EFDD] transition hover:bg-sky-700 hover:scale-105 active:scale-95 block"
           >
             Comprar
           </Link>

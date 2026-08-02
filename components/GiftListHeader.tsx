@@ -12,7 +12,7 @@ export default function GiftListHeader() {
   return (
     <header className="sticky top-0 inset-x-0 z-50 bg-navy text-cream">
       <div className="max-w-6xl mx-auto flex items-center justify-between gap-4 px-6 h-16">
-        <Link href="/" className="flex flex-col leading-none shrink-0">
+        <Link href="/" className="flex flex-col leading-none shrink-0 transition hover:scale-105 active:scale-95">
           <span className="font-serif italic text-xl">G&amp;M</span>
           <span className="text-[9px] tracking-widest uppercase opacity-60">
             por Carol Oliveira
@@ -26,14 +26,14 @@ export default function GiftListHeader() {
               href={link.href}
               className={
                 link.href === "/presentes"
-                  ? "border-b border-cream pb-1 whitespace-nowrap"
-                  : "opacity-70 hover:opacity-100 transition whitespace-nowrap"
+                  ? "border-b border-cream pb-1 whitespace-nowrap transition hover:scale-105 active:scale-95"
+                  : "opacity-70 hover:opacity-100 transition hover:scale-105 active:scale-95 whitespace-nowrap"
               }
             >
               {link.label}
             </Link>
           ))}
-          <button className="opacity-70 hover:opacity-100 transition whitespace-nowrap">
+          <button className="opacity-70 hover:opacity-100 transition hover:scale-105 active:scale-95 whitespace-nowrap">
             Mais ▾
           </button>
         </nav>

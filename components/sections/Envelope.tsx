@@ -38,7 +38,7 @@ export default function Envelope({ onOpen }: { onOpen: () => void }) {
         className={`cursor-pointer relative w-[30%] sm:w-[50%] md:w-[55%] lg:w-[45%] xl:max-w-[1080px] transition-all duration-[900ms] ease-out ${
           opening
             ? "scale-105 opacity-0"
-            : "scale-100 opacity-100 hover:scale-[1.02]"
+            : "scale-100 opacity-100 hover:scale-105 active:scale-95"
         }`}
       >
         <Image

@@ -22,7 +22,7 @@ export default function GiftsFilterBar({
           <button
             key={label}
             onClick={() => onChange(label)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs border transition hover:scale-105 active:scale-95 ${
               active === label
                 ? "bg-navy text-cream border-navy"
                 : "border-navy/30 text-navy hover:bg-navy/5"

@@ -42,7 +42,7 @@ export default async function PagamentoPage({ params }: PageProps) {
             </p>
             <Link
               href="/presentes"
-              className="mt-6 inline-flex w-full sm:w-auto justify-center rounded-full bg-slate-900 px-4 py-3 sm:py-2 text-sm font-semibold text-white"
+              className="mt-6 inline-flex w-full sm:w-auto justify-center rounded-full bg-slate-900 px-4 py-3 sm:py-2 text-sm font-semibold text-white transition hover:scale-105 active:scale-95"
             >
               Voltar para a lista
             </Link>
@@ -82,7 +82,7 @@ export default async function PagamentoPage({ params }: PageProps) {
           </div>
           <Link
             href="/presentes"
-            className="w-full sm:w-auto text-center rounded-full border border-slate-200 bg-white px-4 py-3 sm:py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50"
+            className="w-full sm:w-auto text-center rounded-full border border-slate-200 bg-white px-4 py-3 sm:py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 hover:scale-105 active:scale-95"
           >
             Voltar para a lista
           </Link>
@@ -140,14 +140,14 @@ export default async function PagamentoPage({ params }: PageProps) {
                       href={productLink}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-3 inline-flex rounded-full bg-slate-900 px-4 py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-white transition hover:opacity-90"
+                      className="mt-3 inline-flex rounded-full bg-slate-900 px-4 py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-white transition hover:opacity-90 hover:scale-105 active:scale-95"
                     >
                       Ver o produto
                     </a>
                   ) : (
                     <Link
                       href={productLink}
-                      className="mt-3 inline-flex rounded-full bg-slate-900 px-4 py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-white transition hover:opacity-90"
+                      className="mt-3 inline-flex rounded-full bg-slate-900 px-4 py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-white transition hover:opacity-90 hover:scale-105 active:scale-95"
                     >
                       Ver o produto
                     </Link>

@@ -186,7 +186,7 @@ export default function Questionnaire() {
           <button
             type="submit"
             disabled={!isValid || status === "loading"}
-            className="bg-[#14346D] text-[#F4EFDD] py-3 rounded-full tracking-wider text-xs mt-4 hover:bg-sky-700 disabled:opacity-40 disabled:hover:bg-[#14346D] transition-colors h-10"
+            className="bg-[#14346D] text-[#F4EFDD] py-3 rounded-full tracking-wider text-xs mt-4 hover:bg-sky-700 hover:scale-105 active:scale-95 disabled:opacity-40 disabled:hover:bg-[#14346D] transition h-10"
           >
             {status === "loading" ? "ENVIANDO..." : "ENVIAR"}
           </button>

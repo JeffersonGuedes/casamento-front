@@ -29,7 +29,7 @@ export default function AudioPlayer({ playing }: { playing: boolean }) {
         <button
           onClick={toggleMute}
           aria-label={muted ? "Ativar som" : "Silenciar"}
-          className="fixed bottom-5 right-5 z-50 bg-olive text-cream w-11 h-11 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition"
+          className="fixed bottom-5 right-5 z-50 bg-olive text-cream w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-105 active:scale-95"
         >
           {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>
