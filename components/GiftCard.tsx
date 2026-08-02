@@ -36,7 +36,7 @@ export default function GiftCard({ presente }: { presente: Presente }) {
         </p>
 
         {reservado ? (
-          <span className="mt-auto w-full py-2 rounded text-xs font-medium tracking-wide uppercase text-center bg-neutral-200 text-neutral-500 cursor-not-allowed">
+          <span className="mt-auto w-full py-2 rounded text-xs font-medium tracking-wide uppercase text-center bg-neutral-200 text-neutral-500 cursor-not-allowed md:hover:scale-105 transition-transform">
             Comprado
           </span>
         ) : (
